@@ -1,8 +1,8 @@
 "use client";
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import { useState } from 'react';
+import Drawer from '@mui/material/Drawer';
 import DrawerComponent from '@components/drawer';
+import FlowNodeSelector from '@components/flownodeselector';
 
 export default function Page() {
     const [open, setOpen] = useState(true);
@@ -11,11 +11,10 @@ export default function Page() {
     }
     return (
         <div className="flex justify-between h-screen">
-            <div>
-                <Button variant="contained" onClick={() => toggleDrawer(true)}>Open drawer</Button>
-            </div>
-            <Drawer open={open} onClose={() => toggleDrawer(false)}>
-                <DrawerComponent />
+            <Drawer open={open} onClose={() => toggleDrawer(false)} anchor="right">
+                <DrawerComponent>
+					<FlowNodeSelector/>
+				</DrawerComponent>
             </Drawer>
         </div>
     );
